@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 struct ResultData: Codable {
@@ -24,6 +25,10 @@ struct StationInfo: Codable {
     let lat: String
     let lon: String
     let stationID: String // 대여소ID
+    
+    var coordinate: CLLocationCoordinate2D? {
+        return CLLocationCoordinate2D(latitude: CLLocationDegrees(lat)!, longitude: CLLocationDegrees(lon)!)
+    }
 
     enum CodingKeys: String, CodingKey {
         case dockCount = "rackTotCnt"

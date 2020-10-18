@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import SnapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     // MARK: - Properties
     private var stationInfos = [StationInfo]() {
         didSet {
-            stationInfos.forEach {
-                print($0.stationName)
-            }
+            configureStationInfos()
         }
     }
+    
+    private let mapView = MKMapView()
+    private let locationManger = CLLocationManager()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -45,10 +49,32 @@ class ViewController: UIViewController {
             self.stationInfos = stationInfos
         }
     }
+    // MARK: - Configure Station Infos
+    private func configureStationInfos() {
+        
+        stationInfos.forEach {
+            
+            guard let coordinate = $0.coordinate else {
+                return
+            }
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            annotation.title = $0.stationName
+            annotation.subtitle = $0.parkingCount
+            mapView.addAnnotations([annotation])
+        }
+        
+    }
     
     // MARK: - Configure
     private func configure() {
-        
+        locationManger.delegate = self
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.distanceFilter = kCLDistanceFilterNone
+        locationManger.startUpdatingLocation()
+        mapView.showsUserLocation = true
     }
     
     // MARK: - ConfigureNavi
@@ -59,6 +85,15 @@ class ViewController: UIViewController {
     // MARK: - ConfigureViews
     private func configureViews() {
         view.backgroundColor = .white
+        
+        [mapView].forEach {
+            view.addSubview($0)
+        }
+        
+        mapView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
     }
 
 
