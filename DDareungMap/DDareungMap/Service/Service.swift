@@ -15,7 +15,7 @@ final class Service {
     
     let myKey = "6c716d426d656a64373165575a524f"
     
-    lazy var url = "http://openapi.seoul.go.kr:8088/\(myKey)/json/bikeList/1/50/"
+    lazy var url = "http://openapi.seoul.go.kr:8088/\(myKey)/json/bikeList/1/500/"
     
     // MARK: - Helpers
     func getData(completion: @escaping ([StationInfo]) -> ()) {

@@ -20,7 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private let mapView = MKMapView()
-    private let locationManger = CLLocationManager()
+    private let locationManager = CLLocationManager()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -29,6 +29,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         configure()
         configureNavi()
         configureViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setregion()
     }
     
     // MARK: - Init
@@ -49,6 +54,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.stationInfos = stationInfos
         }
     }
+    
+    private func setregion() {
+        
+//        guard let coordinate = locationManager.location?.coordinate else {
+//            return
+//        }
+        
+        // test
+        let testCoordinate =  CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
+        
+        let region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 8000, longitudinalMeters: 8000)
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
     // MARK: - Configure Station Infos
     private func configureStationInfos() {
         
@@ -69,11 +89,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Configure
     private func configure() {
-        locationManger.delegate = self
-        locationManger.requestWhenInUseAuthorization()
-        locationManger.desiredAccuracy = kCLLocationAccuracyBest
-        locationManger.distanceFilter = kCLDistanceFilterNone
-        locationManger.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
     }
     
