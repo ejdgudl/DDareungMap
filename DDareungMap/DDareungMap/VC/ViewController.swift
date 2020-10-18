@@ -23,7 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private lazy var floatButton: Floaty = {
         let button = Floaty()
         button.addItem(title: "현재 내 위치", handler: { item in
-            self.setregion()
+            self.setRegion()
         })
         return button
     }()
@@ -42,7 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setregion()
+        setRegion()
     }
     
     // MARK: - Init
@@ -64,7 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    private func setregion() {
+    private func setRegion() {
         
 //        guard let coordinate = locationManager.location?.coordinate else {
 //            return
@@ -88,7 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            annotation.coordinate = coordinate
             annotation.title = $0.stationName
             annotation.subtitle = $0.parkingCount
             mapView.addAnnotations([annotation])
@@ -104,6 +104,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
+        mapView.delegate = self
     }
     
     // MARK: - ConfigureNavi
@@ -125,6 +126,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
 
-
 }
 
+extension ViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        var bikeAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annoView") as? MKMarkerAnnotationView
+        
+        if bikeAnnotationView == nil {
+            bikeAnnotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annoView")
+        } else {
+            bikeAnnotationView?.annotation = annotation
+        }
+        
+        stationInfos.forEach {
+
+            if $0.stationName == annotation.title {
+                bikeAnnotationView?.glyphText = annotation.subtitle!
+                
+                if ["0", "1", "2", "3", "4", "5"].contains($0.parkingCount) {
+                    bikeAnnotationView?.markerTintColor = .systemRed
+                } else if ["6", "7", "8", "9", "10"].contains($0.parkingCount) {
+                    bikeAnnotationView?.markerTintColor = .systemOrange
+                } else if ["11", "12", "13", "14", "15"].contains($0.parkingCount) {
+                    bikeAnnotationView?.markerTintColor = .systemGreen
+                } else {
+                    bikeAnnotationView?.markerTintColor = .systemBlue
+                }
+                
+                bikeAnnotationView?.canShowCallout = true
+            }
+        }
+        
+        bikeAnnotationView?.canShowCallout = true
+        
+        return bikeAnnotationView
+    }
+    
+}

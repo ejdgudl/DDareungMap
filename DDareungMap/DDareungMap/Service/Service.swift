@@ -46,6 +46,7 @@ final class Service {
                         
                         let stationInfos = jsonData.rentBikeStatus.row
                         completion(stationInfos)
+                        print(stationInfos)
                         print("----- AF [SUCESS] get data! -----")
                     } catch let error {
                         print(error.localizedDescription)
