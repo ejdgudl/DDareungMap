@@ -31,6 +31,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
     private var setRegionCase: SetRegionCase!
+    private let popupViewLauncher = PopupViewLauncher()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -119,6 +120,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         mapView.delegate = self
+        popupViewLauncher.delegate = self
     }
     
     // MARK: - ConfigureNavi
@@ -187,20 +189,28 @@ extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         setRegionCase = .didSelect(view.annotation!.coordinate)
-        setRegion(setCase: setRegionCase) {
-            
-            UIView.animate(withDuration: 0.5) {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= 190
-                }
-            }
-        }
-    }
-    
-    // MARK: - did deSelect
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        self.popupViewLauncher.show()
+        self.popupViewLauncher.annotationView = view
         
         UIView.animate(withDuration: 0.5) {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= 190
+            }
+            self.setRegion(setCase: self.setRegionCase)
+        }
+        
+    }
+}
+
+extension ViewController: PopupViewDelegate {
+    
+    func PopupViewDelegate(annotationView: MKAnnotationView) {
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            annotationView.isSelected = false
+            
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += 190
             }
