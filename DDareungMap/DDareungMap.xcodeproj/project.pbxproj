@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		D3F60D56253C3094003D6915 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D55253C3094003D6915 /* ViewController.swift */; };
 		D3F60D5B253C3096003D6915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5A253C3096003D6915 /* Assets.xcassets */; };
 		D3F60D5E253C3096003D6915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5C253C3096003D6915 /* LaunchScreen.storyboard */; };
+		D3F60D70253C3217003D6915 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D6F253C3217003D6915 /* Service.swift */; };
+		D3F60D75253C34D1003D6915 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D74253C34D1003D6915 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		D3F60D5A253C3096003D6915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3F60D5D253C3096003D6915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3F60D5F253C3096003D6915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3F60D6F253C3217003D6915 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		D3F60D74253C34D1003D6915 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E11E2289B798D331883EC9BE /* Pods-DDareungMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDareungMap.release.xcconfig"; path = "Target Support Files/Pods-DDareungMap/Pods-DDareungMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,7 +56,6 @@
 				2212825432139345AAFF17E9 /* Pods-DDareungMap.debug.xcconfig */,
 				E11E2289B798D331883EC9BE /* Pods-DDareungMap.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -77,13 +80,39 @@
 		D3F60D50253C3094003D6915 /* DDareungMap */ = {
 			isa = PBXGroup;
 			children = (
+				D3F60D77253C3565003D6915 /* VC */,
+				D3F60D72253C34C0003D6915 /* Model */,
+				D3F60D6E253C3210003D6915 /* Service */,
 				D3F60D51253C3094003D6915 /* AppDelegate.swift */,
-				D3F60D55253C3094003D6915 /* ViewController.swift */,
 				D3F60D5A253C3096003D6915 /* Assets.xcassets */,
 				D3F60D5C253C3096003D6915 /* LaunchScreen.storyboard */,
 				D3F60D5F253C3096003D6915 /* Info.plist */,
 			);
 			path = DDareungMap;
+			sourceTree = "<group>";
+		};
+		D3F60D6E253C3210003D6915 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D3F60D6F253C3217003D6915 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D3F60D72253C34C0003D6915 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3F60D74253C34D1003D6915 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D3F60D77253C3565003D6915 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D3F60D55253C3094003D6915 /* ViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +230,8 @@
 			files = (
 				D3F60D56253C3094003D6915 /* ViewController.swift in Sources */,
 				D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */,
+				D3F60D70253C3217003D6915 /* Service.swift in Sources */,
+				D3F60D75253C34D1003D6915 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

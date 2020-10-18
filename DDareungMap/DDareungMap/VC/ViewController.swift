@@ -10,11 +10,18 @@ import UIKit
 class ViewController: UIViewController {
 
     // MARK: - Properties
-    
+    private var stationInfos = [StationInfo]() {
+        didSet {
+            stationInfos.forEach {
+                print($0.stationName)
+            }
+        }
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        getData()
         configure()
         configureNavi()
         configureViews()
@@ -33,7 +40,11 @@ class ViewController: UIViewController {
     
     
     // MARK: - Helpers
-    
+    private func getData() {
+        Service.shared.getData { (stationInfos) in
+            self.stationInfos = stationInfos
+        }
+    }
     
     // MARK: - Configure
     private func configure() {
