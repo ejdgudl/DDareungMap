@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 import SnapKit
 import Floaty
+import Loaf
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -22,9 +23,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     private lazy var floatButton: Floaty = {
         let button = Floaty()
-        button.addItem(title: "현재 내 위치", handler: { item in
+        button.addItem("현재 내 위치", icon: UIImage(systemName: "location")) { (item) in
             self.setRegion(setCase: .goToCurrentLocation)
-        })
+        }
+        button.addItem("버전 정보", icon: UIImage(systemName: "doc.plaintext")) { (item) in
+            
+        }
         return button
     }()
     
@@ -44,7 +48,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setRegion(setCase: .test)
+        setRegion(setCase: .test) {
+            Loaf("  비켜요 비켜 ~~ 🚵‍♀️🚴‍♀️🚵‍♂️🚴‍♂️🚵‍♀️🚴‍♀️", state: .success, location: .top, sender: self).show()
+        }
     }
     
     // MARK: - Init
