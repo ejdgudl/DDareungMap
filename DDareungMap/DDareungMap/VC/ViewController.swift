@@ -187,11 +187,12 @@ extension ViewController: MKMapViewDelegate {
     
     // MARK: - did select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        self.popupViewLauncher.annotationView = view
+        self.popupViewLauncher.stationInfos = self.stationInfos
         
         setRegionCase = .didSelect(view.annotation!.coordinate)
         
         self.popupViewLauncher.show()
-        self.popupViewLauncher.annotationView = view
         
         UIView.animate(withDuration: 0.5) {
             if self.view.frame.origin.y == 0 {
@@ -210,7 +211,6 @@ extension ViewController: PopupViewDelegate {
         UIView.animate(withDuration: 0.5) {
             
             annotationView.isSelected = false
-            
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += 190
             }

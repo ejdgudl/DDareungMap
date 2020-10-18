@@ -16,6 +16,7 @@
 		D3F60D75253C34D1003D6915 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D74253C34D1003D6915 /* Model.swift */; };
 		D3F60D98253C72FB003D6915 /* SetRegionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D97253C72FB003D6915 /* SetRegionCase.swift */; };
 		D3F60DA1253C87B9003D6915 /* PopupViewLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60DA0253C87B9003D6915 /* PopupViewLauncher.swift */; };
+		D3F60DA4253CA8A5003D6915 /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60DA3253CA8A5003D6915 /* LabelExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		D3F60D74253C34D1003D6915 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D3F60D97253C72FB003D6915 /* SetRegionCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetRegionCase.swift; path = DDareungMap/Model/SetRegionCase.swift; sourceTree = SOURCE_ROOT; };
 		D3F60DA0253C87B9003D6915 /* PopupViewLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopupViewLauncher.swift; path = DDareungMap/Model/PopupViewLauncher.swift; sourceTree = SOURCE_ROOT; };
+		D3F60DA3253CA8A5003D6915 /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LabelExtension.swift; path = DDareungMap/Model/LabelExtension.swift; sourceTree = SOURCE_ROOT; };
 		E11E2289B798D331883EC9BE /* Pods-DDareungMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDareungMap.release.xcconfig"; path = "Target Support Files/Pods-DDareungMap/Pods-DDareungMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 			children = (
 				D3F60D97253C72FB003D6915 /* SetRegionCase.swift */,
 				D3F60DA0253C87B9003D6915 /* PopupViewLauncher.swift */,
+				D3F60DA3253CA8A5003D6915 /* LabelExtension.swift */,
 			);
 			path = Utill;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F60DA4253CA8A5003D6915 /* LabelExtension.swift in Sources */,
 				D3F60D56253C3094003D6915 /* ViewController.swift in Sources */,
 				D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */,
 				D3F60D98253C72FB003D6915 /* SetRegionCase.swift in Sources */,
