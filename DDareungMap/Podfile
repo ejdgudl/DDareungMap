@@ -9,4 +9,5 @@ target 'DDareungMap' do
     pod 'Alamofire', '~> 5.2'
     pod 'SnapKit', '~> 5.0.0'
     pod 'Loaf'
+    pod 'Floaty', '~> 4.2.0'
 end

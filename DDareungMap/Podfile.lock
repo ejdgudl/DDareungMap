@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.2.2)
+  - Floaty (4.2.0)
   - Loaf (0.5.0)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - Floaty (~> 4.2.0)
   - Loaf
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Floaty
     - Loaf
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 5bcd4049d9c03d7f1888a3966c46855ded35afeb
+PODFILE CHECKSUM: 2906c0c2dedb5aef6e5ae05c086687b9a802c867
 
 COCOAPODS: 1.9.3

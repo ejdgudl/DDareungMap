@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import SnapKit
+import Floaty
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -18,6 +19,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             configureStationInfos()
         }
     }
+    
+    private lazy var floatButton: Floaty = {
+        let button = Floaty()
+        button.addItem(title: "현재 내 위치", handler: { item in
+            self.setregion()
+        })
+        return button
+    }()
     
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
@@ -106,7 +115,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [mapView].forEach {
+        [mapView, floatButton].forEach {
             view.addSubview($0)
         }
         
