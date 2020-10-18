@@ -1,0 +1,6 @@
+framework module Pods_DDareungMap {
+  umbrella header "Pods-DDareungMap-umbrella.h"
+
+  export *
+  module * { export * }
+}
