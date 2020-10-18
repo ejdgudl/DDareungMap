@@ -23,7 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private lazy var floatButton: Floaty = {
         let button = Floaty()
         button.addItem(title: "현재 내 위치", handler: { item in
-            self.setRegion()
+            self.setRegion(setCase: .goToCurrentLocation)
         })
         return button
     }()
@@ -42,7 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setRegion()
+        setRegion(setCase: .test)
     }
     
     // MARK: - Init
@@ -64,17 +64,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    private func setRegion() {
+    private func setRegion(setCase: SetRegionCase) {
         
-//        guard let coordinate = locationManager.location?.coordinate else {
-//            return
-//        }
+        var region: MKCoordinateRegion!
         
-        // test
-        let testCoordinate =  CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
+        guard let coordinate = locationManager.location?.coordinate else { return }
         
-        let region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 8000, longitudinalMeters: 8000)
+        switch setCase {
         
+        case .test:
+            // 서울역 (Develop Step)
+            let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
+            region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
+            
+        case .viewDidAppear:
+            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 8000, longitudinalMeters: 8000)
+            
+        case .goToCurrentLocation:
+            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
+        }
+
         mapView.setRegion(region, animated: true)
     }
     

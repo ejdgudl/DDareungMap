@@ -14,6 +14,7 @@
 		D3F60D5E253C3096003D6915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5C253C3096003D6915 /* LaunchScreen.storyboard */; };
 		D3F60D70253C3217003D6915 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D6F253C3217003D6915 /* Service.swift */; };
 		D3F60D75253C34D1003D6915 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D74253C34D1003D6915 /* Model.swift */; };
+		D3F60D98253C72FB003D6915 /* SetRegionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D97253C72FB003D6915 /* SetRegionCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		D3F60D5F253C3096003D6915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3F60D6F253C3217003D6915 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D3F60D74253C34D1003D6915 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D3F60D97253C72FB003D6915 /* SetRegionCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetRegionCase.swift; path = DDareungMap/Model/SetRegionCase.swift; sourceTree = SOURCE_ROOT; };
 		E11E2289B798D331883EC9BE /* Pods-DDareungMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDareungMap.release.xcconfig"; path = "Target Support Files/Pods-DDareungMap/Pods-DDareungMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 		D3F60D50253C3094003D6915 /* DDareungMap */ = {
 			isa = PBXGroup;
 			children = (
+				D3F60D96253C72F2003D6915 /* Utill */,
 				D3F60D77253C3565003D6915 /* VC */,
 				D3F60D72253C34C0003D6915 /* Model */,
 				D3F60D6E253C3210003D6915 /* Service */,
@@ -113,6 +116,14 @@
 				D3F60D55253C3094003D6915 /* ViewController.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		D3F60D96253C72F2003D6915 /* Utill */ = {
+			isa = PBXGroup;
+			children = (
+				D3F60D97253C72FB003D6915 /* SetRegionCase.swift */,
+			);
+			path = Utill;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +241,7 @@
 			files = (
 				D3F60D56253C3094003D6915 /* ViewController.swift in Sources */,
 				D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */,
+				D3F60D98253C72FB003D6915 /* SetRegionCase.swift in Sources */,
 				D3F60D70253C3217003D6915 /* Service.swift in Sources */,
 				D3F60D75253C34D1003D6915 /* Model.swift in Sources */,
 			);
