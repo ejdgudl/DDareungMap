@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import CoreLocation
 
 enum SetRegionCase {
     
     case test
     case viewDidAppear
     case goToCurrentLocation
+    case didSelect(CLLocationCoordinate2D)
     
 }

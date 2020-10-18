@@ -12,7 +12,7 @@ import SnapKit
 import Floaty
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-
+    
     // MARK: - Properties
     private var stationInfos = [StationInfo]() {
         didSet {
@@ -30,6 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
+    private var setRegionCase: SetRegionCase!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -64,7 +65,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    private func setRegion(setCase: SetRegionCase) {
+    private func setRegion(setCase: SetRegionCase, completion: (() -> ())? = nil) {
         
         var region: MKCoordinateRegion!
         
@@ -82,9 +83,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
         case .goToCurrentLocation:
             region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
+            
+        case .didSelect(let coordinate):
+            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
         }
-
+        
         mapView.setRegion(region, animated: true)
+        completion?()
     }
     
     // MARK: - Configure Station Infos
@@ -134,11 +139,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
     }
-
+    
 }
 
 extension ViewController: MKMapViewDelegate {
     
+    // MARK: - view for annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
@@ -154,7 +160,7 @@ extension ViewController: MKMapViewDelegate {
         }
         
         stationInfos.forEach {
-
+            
             if $0.stationName == annotation.title {
                 bikeAnnotationView?.glyphText = annotation.subtitle!
                 
@@ -175,6 +181,30 @@ extension ViewController: MKMapViewDelegate {
         bikeAnnotationView?.canShowCallout = true
         
         return bikeAnnotationView
+    }
+    
+    // MARK: - did select
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        setRegionCase = .didSelect(view.annotation!.coordinate)
+        setRegion(setCase: setRegionCase) {
+            
+            UIView.animate(withDuration: 0.5) {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= 190
+                }
+            }
+        }
+    }
+    
+    // MARK: - did deSelect
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        UIView.animate(withDuration: 0.5) {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += 190
+            }
+        }
     }
     
 }
