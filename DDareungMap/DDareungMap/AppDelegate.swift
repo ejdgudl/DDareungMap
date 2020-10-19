@@ -18,12 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
-        Service.shared.getData1 { (stationInfos) in
-            self.stationInfos = stationInfos
-            Service.shared.getData2 { (stationInfos) in
-                self.stationInfos.append(contentsOf: stationInfos)
-                vc.stationInfos = self.stationInfos
-            }
+        // MARK: - Bike Service
+//        BikeService.shared.getData1 { (stationInfos) in
+//            self.stationInfos = stationInfos
+//            BikeService.shared.getData2 { (stationInfos) in
+//                self.stationInfos.append(contentsOf: stationInfos)
+//                vc.bikeStationInfos = self.stationInfos
+//            }
+//        }
+        
+        // MARK: - Subway Service
+        SubwayService.shared.getData { subStationInfo in
+            vc.subStationInfos = subStationInfo
         }
         
         return true

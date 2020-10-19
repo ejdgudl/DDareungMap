@@ -13,12 +13,14 @@
 		D36013D8253D7FF10025DFBB /* SetRegionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013D5253D7FF10025DFBB /* SetRegionCase.swift */; };
 		D36013DB253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013DA253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift */; };
 		D3A628E5253DC92000B7C2E2 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628E4253DC92000B7C2E2 /* LaunchView.swift */; };
+		D3A628E9253DCC7500B7C2E2 /* SubwayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */; };
+		D3A628ED253DCDCB00B7C2E2 /* SubwayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */; };
 		D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D51253C3094003D6915 /* AppDelegate.swift */; };
 		D3F60D56253C3094003D6915 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D55253C3094003D6915 /* ViewController.swift */; };
 		D3F60D5B253C3096003D6915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5A253C3096003D6915 /* Assets.xcassets */; };
 		D3F60D5E253C3096003D6915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5C253C3096003D6915 /* LaunchScreen.storyboard */; };
-		D3F60D70253C3217003D6915 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D6F253C3217003D6915 /* Service.swift */; };
-		D3F60D75253C34D1003D6915 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D74253C34D1003D6915 /* Model.swift */; };
+		D3F60D70253C3217003D6915 /* BikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D6F253C3217003D6915 /* BikeService.swift */; };
+		D3F60D75253C34D1003D6915 /* BikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D74253C34D1003D6915 /* BikeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,14 +31,16 @@
 		D36013D5253D7FF10025DFBB /* SetRegionCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRegionCase.swift; sourceTree = "<group>"; };
 		D36013DA253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonClusteringMKMarkerAnnotationView.swift; sourceTree = "<group>"; };
 		D3A628E4253DC92000B7C2E2 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayService.swift; sourceTree = "<group>"; };
+		D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayModel.swift; sourceTree = "<group>"; };
 		D3F60D4E253C3094003D6915 /* DDareungMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDareungMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F60D51253C3094003D6915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F60D55253C3094003D6915 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D3F60D5A253C3096003D6915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3F60D5D253C3096003D6915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3F60D5F253C3096003D6915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3F60D6F253C3217003D6915 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		D3F60D74253C34D1003D6915 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D3F60D6F253C3217003D6915 /* BikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeService.swift; sourceTree = "<group>"; };
+		D3F60D74253C34D1003D6915 /* BikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeModel.swift; sourceTree = "<group>"; };
 		E11E2289B798D331883EC9BE /* Pods-DDareungMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDareungMap.release.xcconfig"; path = "Target Support Files/Pods-DDareungMap/Pods-DDareungMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +110,8 @@
 		D3F60D6E253C3210003D6915 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				D3F60D6F253C3217003D6915 /* Service.swift */,
+				D3F60D6F253C3217003D6915 /* BikeService.swift */,
+				D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -114,7 +119,8 @@
 		D3F60D72253C34C0003D6915 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D3F60D74253C34D1003D6915 /* Model.swift */,
+				D3F60D74253C34D1003D6915 /* BikeModel.swift */,
+				D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,13 +267,15 @@
 			files = (
 				D36013D7253D7FF10025DFBB /* LabelExtension.swift in Sources */,
 				D3F60D56253C3094003D6915 /* ViewController.swift in Sources */,
+				D3A628E9253DCC7500B7C2E2 /* SubwayService.swift in Sources */,
 				D36013D8253D7FF10025DFBB /* SetRegionCase.swift in Sources */,
 				D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */,
-				D3F60D70253C3217003D6915 /* Service.swift in Sources */,
-				D3F60D75253C34D1003D6915 /* Model.swift in Sources */,
+				D3F60D70253C3217003D6915 /* BikeService.swift in Sources */,
+				D3F60D75253C34D1003D6915 /* BikeModel.swift in Sources */,
 				D36013D6253D7FF10025DFBB /* PopupViewLauncher.swift in Sources */,
 				D3A628E5253DC92000B7C2E2 /* LaunchView.swift in Sources */,
 				D36013DB253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift in Sources */,
+				D3A628ED253DCDCB00B7C2E2 /* SubwayModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

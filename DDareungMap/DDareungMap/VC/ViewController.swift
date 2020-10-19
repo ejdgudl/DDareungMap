@@ -15,9 +15,15 @@ import Loaf
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Properties
-    var stationInfos = [StationInfo]() {
+    var bikeStationInfos = [StationInfo]() {
         didSet {
             configureStationInfos()
+        }
+    }
+    
+    var subStationInfos = [SubStationInfo]() {
+        didSet {
+            configureSubStationInfos()
         }
     }
     
@@ -38,7 +44,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }()
     
     private let launchView = LaunchView()
-    
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
     private var setRegionCase: SetRegionCase!
@@ -114,7 +119,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Configure Station Infos
     private func configureStationInfos() {
         
-        stationInfos.forEach {
+        bikeStationInfos.forEach {
             
             guard let coordinate = $0.coordinate else {
                 return
@@ -126,7 +131,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             annotation.subtitle = $0.parkingCount
             mapView.addAnnotations([annotation])
         }
-        
+    }
+    
+    private func configureSubStationInfos() {
+        subStationInfos.forEach {
+            print($0)
+        }
     }
     
     // MARK: - Configure
@@ -186,7 +196,7 @@ extension ViewController: MKMapViewDelegate {
             bikeAnnotationView?.annotation = annotation
         }
         
-        stationInfos.forEach {
+        bikeStationInfos.forEach {
             
             if $0.stationName == annotation.title {
                 bikeAnnotationView?.glyphText = annotation.subtitle!
@@ -212,7 +222,7 @@ extension ViewController: MKMapViewDelegate {
     // MARK: - did select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         self.popupViewLauncher.annotationView = view
-        self.popupViewLauncher.stationInfos = self.stationInfos
+        self.popupViewLauncher.stationInfos = self.bikeStationInfos
         
         setRegionCase = .didSelect(view.annotation!.coordinate)
         

@@ -31,29 +31,6 @@ class LaunchView: UIView {
             make.right.bottom.equalToSuperview().inset(15)
             make.width.equalTo(50)
         }
-        let label3 = UILabel()
-        label3.textColor = .white
-        label3.font = .systemFont(ofSize: 7, weight: .light)
-        label3.numberOfLines = 0
-        label3.text = "데이터 제공부서 \n 서울특별시 도시교통실 \n보행친화기획관 자전거정책과 \n 담당자 \n 김석수"
-        label3.textAlignment = .center
-        view.addSubview(label3)
-        label3.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().inset(40)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(300)
-        }
-        let label4 = UILabel()
-        label4.textColor = .white
-        label4.font = .systemFont(ofSize: 8, weight: .regular)
-        label4.text = "본 저작물은 '서울특별시'에서 '20년'작성하여 \n공공누리 제1유형으로 개방한 '저작물명(작성자:김석수)'을 이용하였으며,\n해당 저작물은 '서울자전거 홈페이지'에서 무료로 다운받으실 수 있습니다."
-        label4.textAlignment = .center
-        label4.numberOfLines = 0
-        view.addSubview(label4)
-        label4.snp.makeConstraints { (make) in
-            make.bottom.equalTo(label3.snp.top).inset(-17)
-            make.centerX.equalToSuperview()
-        }
         let label2 = UILabel()
         label2.textColor = .white
         label2.font = .systemFont(ofSize: 7, weight: .regular)
@@ -61,7 +38,18 @@ class LaunchView: UIView {
         label2.textAlignment = .center
         view.addSubview(label2)
         label2.snp.makeConstraints { (make) in
-            make.top.equalTo(label3.snp.bottom).offset(7)
+            make.bottom.equalToSuperview().inset(20)
+            make.centerX.equalToSuperview()
+        }
+        let label3 = UILabel()
+        label3.textColor = .white
+        label3.font = .systemFont(ofSize: 8, weight: .regular)
+        label3.text = "본 저작물은 '서울특별시'에서 '20년'작성하여 \n공공누리 제1유형으로 개방한 '저작물명(작성자:김석수)'을 이용하였으며,\n해당 저작물은 '서울자전거 홈페이지'에서 무료로 다운받으실 수 있습니다."
+        label3.textAlignment = .center
+        label3.numberOfLines = 0
+        view.addSubview(label3)
+        label3.snp.makeConstraints { (make) in
+            make.bottom.equalTo(label2.snp.top).inset(-13)
             make.centerX.equalToSuperview()
         }
         return view

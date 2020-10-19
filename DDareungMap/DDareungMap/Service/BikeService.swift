@@ -8,10 +8,10 @@
 import Foundation
 import Alamofire
 
-final class Service {
+final class BikeService {
     
     // MARK: - Properties
-    static let shared = Service()
+    static let shared = BikeService()
     
     let myKey = "6c716d426d656a64373165575a524f"
     
@@ -49,7 +49,7 @@ final class Service {
                         
                         completion(stationInfos)
 
-                        print("----- AF [SUCESS] get data! -----")
+                        print("----- AF BikeInfo [SUCESS] 1...1000 get data! -----")
                     } catch let error {
                         print(error.localizedDescription)
                         print("----- JsonDecoder [ERROR] -----")
@@ -97,7 +97,7 @@ final class Service {
                         
                         completion(stationInfos)
 
-                        print("----- AF [SUCESS] get data! -----")
+                        print("----- AF BikeInfo [SUCESS] 1001...2000 get data! -----")
                     } catch let error {
                         print(error.localizedDescription)
                         print("----- JsonDecoder [ERROR] -----")
