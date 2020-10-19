@@ -28,23 +28,24 @@ class LaunchView: UIView {
         imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.right.bottom.equalToSuperview().inset(15)
+            make.bottom.equalToSuperview().inset(15)
+            make.centerX.equalToSuperview()
             make.width.equalTo(50)
         }
         let label2 = UILabel()
         label2.textColor = .white
-        label2.font = .systemFont(ofSize: 7, weight: .regular)
+        label2.font = .systemFont(ofSize: 10, weight: .regular)
         label2.text = "ver 1.0"
         label2.textAlignment = .center
         view.addSubview(label2)
         label2.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().inset(20)
+            make.bottom.equalTo(imageView.snp.top).offset(-10)
             make.centerX.equalToSuperview()
         }
         let label3 = UILabel()
         label3.textColor = .white
         label3.font = .systemFont(ofSize: 8, weight: .regular)
-        label3.text = "본 저작물은 '서울특별시'에서 '20년'작성하여 \n공공누리 제1유형으로 개방한 '저작물명(작성자:김석수)'을 이용하였으며,\n해당 저작물은 '서울자전거 홈페이지'에서 무료로 다운받으실 수 있습니다."
+        label3.text = "본 저작물은 '서울특별시'에서 '20년'작성하여 \n공공누리 제1유형으로 개방한 '저작물명(작성자:김석수, 김성은)'을 이용하였으며,\n해당 저작물은 '서울자전거 홈페이지', '서울교통공사 홈페이지'에서 무료로 다운받으실 수 있습니다."
         label3.textAlignment = .center
         label3.numberOfLines = 0
         view.addSubview(label3)
