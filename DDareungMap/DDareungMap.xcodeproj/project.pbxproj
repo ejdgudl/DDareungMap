@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4774F0B800D24B3A6ABAA179 /* Pods_DDareungMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3623321013AA2D6C772116D1 /* Pods_DDareungMap.framework */; };
-		D36013D6253D7FF10025DFBB /* PopupViewLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013D3253D7FF10025DFBB /* PopupViewLauncher.swift */; };
+		D36013D6253D7FF10025DFBB /* InfoPopupViewLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013D3253D7FF10025DFBB /* InfoPopupViewLauncher.swift */; };
 		D36013D7253D7FF10025DFBB /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013D4253D7FF10025DFBB /* LabelExtension.swift */; };
 		D36013D8253D7FF10025DFBB /* SetRegionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013D5253D7FF10025DFBB /* SetRegionCase.swift */; };
 		D36013DB253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36013DA253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift */; };
 		D3A628E5253DC92000B7C2E2 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628E4253DC92000B7C2E2 /* LaunchView.swift */; };
 		D3A628E9253DCC7500B7C2E2 /* SubwayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */; };
 		D3A628ED253DCDCB00B7C2E2 /* SubwayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */; };
+		D3A628F1253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628F0253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift */; };
 		D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D51253C3094003D6915 /* AppDelegate.swift */; };
 		D3F60D56253C3094003D6915 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D55253C3094003D6915 /* ViewController.swift */; };
 		D3F60D5B253C3096003D6915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5A253C3096003D6915 /* Assets.xcassets */; };
@@ -26,13 +27,14 @@
 /* Begin PBXFileReference section */
 		2212825432139345AAFF17E9 /* Pods-DDareungMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDareungMap.debug.xcconfig"; path = "Target Support Files/Pods-DDareungMap/Pods-DDareungMap.debug.xcconfig"; sourceTree = "<group>"; };
 		3623321013AA2D6C772116D1 /* Pods_DDareungMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DDareungMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D36013D3253D7FF10025DFBB /* PopupViewLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewLauncher.swift; sourceTree = "<group>"; };
+		D36013D3253D7FF10025DFBB /* InfoPopupViewLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPopupViewLauncher.swift; sourceTree = "<group>"; };
 		D36013D4253D7FF10025DFBB /* LabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		D36013D5253D7FF10025DFBB /* SetRegionCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRegionCase.swift; sourceTree = "<group>"; };
 		D36013DA253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonClusteringMKMarkerAnnotationView.swift; sourceTree = "<group>"; };
 		D3A628E4253DC92000B7C2E2 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayService.swift; sourceTree = "<group>"; };
 		D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayModel.swift; sourceTree = "<group>"; };
+		D3A628F0253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachPopupViewLauncher.swift; sourceTree = "<group>"; };
 		D3F60D4E253C3094003D6915 /* DDareungMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDareungMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F60D51253C3094003D6915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F60D55253C3094003D6915 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				D36013D4253D7FF10025DFBB /* LabelExtension.swift */,
-				D36013D3253D7FF10025DFBB /* PopupViewLauncher.swift */,
+				D36013D3253D7FF10025DFBB /* InfoPopupViewLauncher.swift */,
+				D3A628F0253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift */,
 				D36013D5253D7FF10025DFBB /* SetRegionCase.swift */,
 			);
 			path = Utill;
@@ -272,7 +275,8 @@
 				D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */,
 				D3F60D70253C3217003D6915 /* BikeService.swift in Sources */,
 				D3F60D75253C34D1003D6915 /* BikeModel.swift in Sources */,
-				D36013D6253D7FF10025DFBB /* PopupViewLauncher.swift in Sources */,
+				D3A628F1253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift in Sources */,
+				D36013D6253D7FF10025DFBB /* InfoPopupViewLauncher.swift in Sources */,
 				D3A628E5253DC92000B7C2E2 /* LaunchView.swift in Sources */,
 				D36013DB253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift in Sources */,
 				D3A628ED253DCDCB00B7C2E2 /* SubwayModel.swift in Sources */,

@@ -9,11 +9,11 @@ import UIKit
 import MapKit
 import CoreLocation
 
-protocol PopupViewDelegate: class {
+protocol InfoPopupViewDelegate: class {
     func PopupViewDelegate(annotationView: MKAnnotationView)
 }
 
-class PopupViewLauncher: NSObject {
+class InfoPopupViewLauncher: NSObject {
     
     // MARK: - Properties
     private lazy var mainView: UIView = {
@@ -75,7 +75,7 @@ class PopupViewLauncher: NSObject {
     }()
     
     private var window: UIWindow?
-    weak var delegate: PopupViewDelegate?
+    weak var delegate: InfoPopupViewDelegate?
     var annotationView: MKAnnotationView?
     var stationInfos = [StationInfo]()
     var locationManager: CLLocationManager?

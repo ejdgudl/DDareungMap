@@ -21,18 +21,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    var subStationInfos = [SubStationInfo]() {
-        didSet {
-            configureSubStationInfos()
-        }
-    }
-    
+    var subStationInfos = [SubStationInfo]()
+
     private lazy var floatButton: Floaty = {
         let button = Floaty()
         button.alpha = 0
         button.buttonColor = .systemGreen
         button.addItem("현재 내 위치", icon: UIImage(systemName: "location")) { (item) in
             self.setRegion(setCase: .goToCurrentLocation)
+        }
+        button.addItem("역으로 이동하기", icon: UIImage(systemName: "mappin")) { (item) in
+            self.searchPopupViewLauncher.subStationInfos = self.subStationInfos
+            self.searchPopupViewLauncher.show()
         }
         button.addItem("문의", icon: UIImage(systemName: "doc.plaintext")) { (item) in
             let alert = UIAlertController(title: "문의", message: "ejdgudl@gmail.com", preferredStyle: .alert)
@@ -47,7 +47,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
     private var setRegionCase: SetRegionCase!
-    private let popupViewLauncher = PopupViewLauncher()
+    private let infoPopupViewLauncher = InfoPopupViewLauncher()
+    private let searchPopupViewLauncher = SearchPopupViewLauncher()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -133,12 +134,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    private func configureSubStationInfos() {
-        subStationInfos.forEach {
-            print($0)
-        }
-    }
-    
     // MARK: - Configure
     private func configure() {
         locationManager.delegate = self
@@ -149,8 +144,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
         mapView.delegate = self
         mapView.isZoomEnabled = false
-        popupViewLauncher.delegate = self
-        popupViewLauncher.locationManager = self.locationManager
+        infoPopupViewLauncher.delegate = self
+        infoPopupViewLauncher.locationManager = self.locationManager
+        searchPopupViewLauncher.delegate = self
     }
     
     // MARK: - ConfigureNavi
@@ -221,12 +217,12 @@ extension ViewController: MKMapViewDelegate {
     
     // MARK: - did select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        self.popupViewLauncher.annotationView = view
-        self.popupViewLauncher.stationInfos = self.bikeStationInfos
+        self.infoPopupViewLauncher.annotationView = view
+        self.infoPopupViewLauncher.stationInfos = self.bikeStationInfos
         
         setRegionCase = .didSelect(view.annotation!.coordinate)
         
-        self.popupViewLauncher.show()
+        self.infoPopupViewLauncher.show()
         
         UIView.animate(withDuration: 0.5) {
             if self.view.frame.origin.y == 0 {
@@ -238,7 +234,7 @@ extension ViewController: MKMapViewDelegate {
     }
 }
 
-extension ViewController: PopupViewDelegate {
+extension ViewController: InfoPopupViewDelegate {
     
     func PopupViewDelegate(annotationView: MKAnnotationView) {
         
@@ -249,6 +245,14 @@ extension ViewController: PopupViewDelegate {
                 self.view.frame.origin.y += 190
             }
         }
+    }
+    
+}
+
+extension ViewController: SearchPopupViewDelegate {
+    
+    func PopupViewDelegate() {
+        print("해당 역으로 이동")
     }
     
 }
