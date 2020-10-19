@@ -16,4 +16,11 @@ extension UILabel {
 
     }
     
+    func getLauchAttributedString(lhs: String, rhs: String) {
+        let attributedTitle = NSMutableAttributedString(string: lhs, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 25), NSAttributedString.Key.foregroundColor: UIColor.white])
+        attributedTitle.append(NSAttributedString(string: rhs, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        attributedText = attributedTitle
+
+    }
+    
 }

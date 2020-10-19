@@ -45,56 +45,58 @@ final class Service {
                         
                         let jsonData = try JSONDecoder().decode(ResultData.self, from: data)
                         
-                        var stationInfos = jsonData.rentBikeStatus.row
+                        let stationInfos = jsonData.rentBikeStatus.row
                         
-                        AF.request(self.url2, method: .get).response { (ref) in
-                            
-                            if let error = ref.error {
-                                print(error.localizedDescription)
-                            }
-                            
-                            guard let statusCode = ref.response?.statusCode else {
-                                return
-                            }
-                            
-                            if (200...299).contains(statusCode) {
-                                
-                                switch ref.result {
-                                
-                                case .success(let data):
-                                    
-                                    guard let data = data else {
-                                        return
-                                    }
-                                    
-                                    do {
-                                        
-                                        let jsonData = try JSONDecoder().decode(ResultData.self, from: data)
-                                        
-                                        stationInfos.append(contentsOf: jsonData.rentBikeStatus.row)
-                                        
-                                        // completion
-                                        completion(stationInfos)
-                                        
-                                        print("----- AF [SUCESS] get data! -----")
-                                    } catch let error {
-                                        print(error.localizedDescription)
-                                        print("----- JsonDecoder [ERROR] -----")
-                                    }
-                                    
-                                    
-                                case .failure(let error):
-                                    print("----- AF [FAIL] result is fail... -----")
-                                    print(error.localizedDescription)
-                                }
-                            } else {
-                                print("----- AF [FAIL] status code is contains 300... -----")
-                            }
-                            
-                        }
+                        completion(stationInfos)
+
+                        print("----- AF [SUCESS] get data! -----")
+                    } catch let error {
+                        print(error.localizedDescription)
+                        print("----- JsonDecoder [ERROR] -----")
+                    }
+                    
+                    
+                case .failure(let error):
+                    print("----- AF [FAIL] result is fail... -----")
+                    print(error.localizedDescription)
+                }
+            } else {
+                print("----- AF [FAIL] status code is contains 300... -----")
+            }
+            
+        }
+    }
+    
+    func getData2(completion: @escaping ([StationInfo]) -> ()) {
+        
+        AF.request(url2, method: .get).response { (ref) in
+            
+            if let error = ref.error {
+                print(error.localizedDescription)
+            }
+            
+            guard let statusCode = ref.response?.statusCode else {
+                return
+            }
+            
+            if (200...299).contains(statusCode) {
+                
+                switch ref.result {
+                
+                case .success(let data):
+                    
+                    guard let data = data else {
+                        return
+                    }
+                    
+                    do {
                         
-//                        completion(stationInfos)
-//                        print(stationInfos)
+                        let jsonData = try JSONDecoder().decode(ResultData.self, from: data)
+                        
+                        let stationInfos = jsonData.rentBikeStatus.row
+                        
+                        completion(stationInfos)
+
                         print("----- AF [SUCESS] get data! -----")
                     } catch let error {
                         print(error.localizedDescription)
@@ -117,5 +119,4 @@ final class Service {
     private init() {
         
     }
-    
 }

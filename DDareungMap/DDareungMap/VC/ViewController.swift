@@ -23,14 +23,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     private lazy var floatButton: Floaty = {
         let button = Floaty()
+        button.alpha = 0
+        button.buttonColor = .systemGreen
         button.addItem("현재 내 위치", icon: UIImage(systemName: "location")) { (item) in
             self.setRegion(setCase: .goToCurrentLocation)
         }
-        button.addItem("버전 정보", icon: UIImage(systemName: "doc.plaintext")) { (item) in
-            
+        button.addItem("문의", icon: UIImage(systemName: "doc.plaintext")) { (item) in
+            let alert = UIAlertController(title: "문의", message: "ejdgudl@gmail.com", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true)
         }
         return button
     }()
+    
+    private let launchView = LaunchView()
     
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
@@ -48,8 +55,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setRegion(setCase: .test) {
-            Loaf("  따릉 따릉 ~ 🚵‍♀️🚴‍♀️🚵‍♂️🚴‍♂️🚵‍♀️🚴‍♀️", state: .success, location: .top, sender: self).show()
+            Loaf("  잠시만 기다려 주세요 ~ 🚴‍♀️🚴‍♂️🚴‍♀️", state: .info, location: .top, sender: self).show()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            UIView.animate(withDuration: 1.5) {
+                self.launchView.alpha = 0
+            }
+            self.floatButton.alpha = 1
+            self.launchView.removeFromSuperview()
+        })
     }
     
     // MARK: - Init
@@ -137,14 +152,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [mapView, floatButton].forEach {
+        [mapView, floatButton, launchView].forEach {
             view.addSubview($0)
         }
         
         mapView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+            
+        mapView.addSubview(launchView)
         
+        launchView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
@@ -183,12 +203,8 @@ extension ViewController: MKMapViewDelegate {
                 } else {
                     bikeAnnotationView?.markerTintColor = .systemBlue
                 }
-                
-                bikeAnnotationView?.canShowCallout = true
             }
         }
-        
-        bikeAnnotationView?.canShowCallout = true
         
         return bikeAnnotationView
     }

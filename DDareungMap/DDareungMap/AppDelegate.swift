@@ -11,15 +11,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var stationInfos = [StationInfo]()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let vc = ViewController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc
+        window?.makeKeyAndVisible()
         
         Service.shared.getData1 { (stationInfos) in
-            self.window?.makeKeyAndVisible()
-            vc.stationInfos = stationInfos
+            self.stationInfos = stationInfos
+            Service.shared.getData2 { (stationInfos) in
+                self.stationInfos.append(contentsOf: stationInfos)
+                vc.stationInfos = self.stationInfos
+            }
         }
         
         return true
