@@ -16,6 +16,7 @@
 		D3A628E9253DCC7500B7C2E2 /* SubwayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */; };
 		D3A628ED253DCDCB00B7C2E2 /* SubwayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */; };
 		D3A628F1253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628F0253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift */; };
+		D3A628F4253DE60D00B7C2E2 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A628F3253DE60D00B7C2E2 /* SearchResultCell.swift */; };
 		D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D51253C3094003D6915 /* AppDelegate.swift */; };
 		D3F60D56253C3094003D6915 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F60D55253C3094003D6915 /* ViewController.swift */; };
 		D3F60D5B253C3096003D6915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F60D5A253C3096003D6915 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		D3A628E8253DCC7500B7C2E2 /* SubwayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayService.swift; sourceTree = "<group>"; };
 		D3A628EC253DCDCB00B7C2E2 /* SubwayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayModel.swift; sourceTree = "<group>"; };
 		D3A628F0253DDABE00B7C2E2 /* SerachPopupViewLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachPopupViewLauncher.swift; sourceTree = "<group>"; };
+		D3A628F3253DE60D00B7C2E2 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		D3F60D4E253C3094003D6915 /* DDareungMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDareungMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F60D51253C3094003D6915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F60D55253C3094003D6915 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				D36013DA253D80220025DFBB /* NonClusteringMKMarkerAnnotationView.swift */,
 				D3A628E4253DC92000B7C2E2 /* LaunchView.swift */,
+				D3A628F3253DE60D00B7C2E2 /* SearchResultCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				D3F60D56253C3094003D6915 /* ViewController.swift in Sources */,
 				D3A628E9253DCC7500B7C2E2 /* SubwayService.swift in Sources */,
 				D36013D8253D7FF10025DFBB /* SetRegionCase.swift in Sources */,
+				D3A628F4253DE60D00B7C2E2 /* SearchResultCell.swift in Sources */,
 				D3F60D52253C3094003D6915 /* AppDelegate.swift in Sources */,
 				D3F60D70253C3217003D6915 /* BikeService.swift in Sources */,
 				D3F60D75253C34D1003D6915 /* BikeModel.swift in Sources */,

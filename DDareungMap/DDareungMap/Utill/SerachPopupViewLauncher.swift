@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol SearchPopupViewDelegate: class {
     func PopupViewDelegate()
+    func goToSelectSubway(stationCoordinate: CLLocationCoordinate2D)
 }
 
 class SearchPopupViewLauncher: NSObject {
@@ -19,6 +20,12 @@ class SearchPopupViewLauncher: NSObject {
     var subStationInfos = [SubStationInfo]() {
         didSet {
             print(subStationInfos)
+        }
+    }
+    
+    var searchResults = [SubStationInfo]() {
+        didSet {
+            tableView.reloadData()
         }
     }
     
@@ -40,17 +47,25 @@ class SearchPopupViewLauncher: NSObject {
     let searchBar: UISearchBar = {
         let bar = UISearchBar()
         bar.showsCancelButton = true
-        bar.placeholder = "Search for a place or address"
+        bar.placeholder = "역 이름을 입력해주세요"
         return bar
     }()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.rowHeight = 40
+        tableView.separatorStyle = .none
         return tableView
     }()
     
     private var window: UIWindow?
     weak var delegate: SearchPopupViewDelegate?
+    
+    // MARK: - Init
+    override init() {
+        super.init()
+        configure()
+    }
     
     // MARK: - Selector
     @objc private func didTapBackView() {
@@ -85,7 +100,9 @@ class SearchPopupViewLauncher: NSObject {
     
     // MARK: - Configure
     private func configure() {
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(SearchResultCell.self, forCellReuseIdentifier: SearchResultCell.cellID)
     }
     
     
@@ -105,6 +122,46 @@ class SearchPopupViewLauncher: NSObject {
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(searchBar.snp.bottom)
             make.left.right.bottom.equalToSuperview()
+        }
+        
+    }
+    
+}
+
+extension SearchPopupViewLauncher: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.cellID, for: indexPath) as? SearchResultCell else { return UITableViewCell() }
+        
+            cell.subStation = searchResults[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            self.backView.alpha = 0
+            self.mainView.frame.origin.y += 450
+        }
+        
+        let subStationName = searchResults[indexPath.row].stationName
+        
+        let addres = subStationName + "역"
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addres) { (placeMark, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            guard let place = placeMark?.first else { return }
+            guard let coordinate = place.location?.coordinate else { return }
+            self.delegate?.goToSelectSubway(stationCoordinate: coordinate)
         }
         
     }

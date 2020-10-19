@@ -252,7 +252,15 @@ extension ViewController: InfoPopupViewDelegate {
 
 extension ViewController: SearchPopupViewDelegate {
     
+    func goToSelectSubway(stationCoordinate: CLLocationCoordinate2D) {
+        setRegion(setCase: .didDeSelect(stationCoordinate))
+        searchPopupViewLauncher.searchBar.text = ""
+        searchPopupViewLauncher.searchResults.removeAll()
+    }
+    
     func PopupViewDelegate() {
+        searchPopupViewLauncher.searchBar.text = ""
+        searchPopupViewLauncher.searchResults.removeAll()
         print("해당 역으로 이동")
     }
     
@@ -263,5 +271,20 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
+        searchBar.text = ""
+        searchPopupViewLauncher.searchResults.removeAll()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        
+        guard let text = searchBar.text else { return }
+        
+        subStationInfos.forEach {
+            if text.contains($0.stationName) {
+                searchPopupViewLauncher.searchResults.append($0)
+            }
+        }
+    }
+    
 }

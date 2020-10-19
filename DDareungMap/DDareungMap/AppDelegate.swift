@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // MARK: - Bike Service
-//        BikeService.shared.getData1 { (stationInfos) in
-//            self.stationInfos = stationInfos
-//            BikeService.shared.getData2 { (stationInfos) in
-//                self.stationInfos.append(contentsOf: stationInfos)
-//                vc.bikeStationInfos = self.stationInfos
-//            }
-//        }
+        BikeService.shared.getData1 { (stationInfos) in
+            self.stationInfos = stationInfos
+            BikeService.shared.getData2 { (stationInfos) in
+                self.stationInfos.append(contentsOf: stationInfos)
+                vc.bikeStationInfos = self.stationInfos
+            }
+        }
         
         // MARK: - Subway Service
         SubwayService.shared.getData { subStationInfo in
