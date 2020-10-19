@@ -37,12 +37,26 @@ class SearchPopupViewLauncher: NSObject {
         return view
     }()
     
+    let searchBar: UISearchBar = {
+        let bar = UISearchBar()
+        bar.showsCancelButton = true
+        bar.placeholder = "Search for a place or address"
+        return bar
+    }()
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
     private var window: UIWindow?
     weak var delegate: SearchPopupViewDelegate?
     
     // MARK: - Selector
     @objc private func didTapBackView() {
         delegate?.PopupViewDelegate()
+        searchBar.endEditing(true)
+        
         UIView.animate(withDuration: 0.5) {
             self.backView.alpha = 0
             self.mainView.frame.origin.y += 450
@@ -78,10 +92,20 @@ class SearchPopupViewLauncher: NSObject {
     // MARK: - ConfigureViews
     private func configureViews() {
         
-//        [].forEach {
-//            .addSubview($0)
-//        }
-
+        [searchBar, tableView].forEach {
+            mainView.addSubview($0)
+        }
+        
+        searchBar.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().inset(4)
+            make.left.right.equalToSuperview().inset(8)
+            make.height.equalTo(50)
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
         
     }
     

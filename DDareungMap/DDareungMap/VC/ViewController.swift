@@ -147,6 +147,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         infoPopupViewLauncher.delegate = self
         infoPopupViewLauncher.locationManager = self.locationManager
         searchPopupViewLauncher.delegate = self
+        searchPopupViewLauncher.searchBar.delegate = self
     }
     
     // MARK: - ConfigureNavi
@@ -255,4 +256,12 @@ extension ViewController: SearchPopupViewDelegate {
         print("해당 역으로 이동")
     }
     
+}
+
+// MARK: - UISearchBar Delegate
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
 }
