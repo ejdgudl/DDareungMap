@@ -15,7 +15,7 @@ import Loaf
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Properties
-    private var stationInfos = [StationInfo]() {
+    var stationInfos = [StationInfo]() {
         didSet {
             configureStationInfos()
         }
@@ -40,7 +40,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
         configure()
         configureNavi()
         configureViews()
@@ -49,7 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setRegion(setCase: .test) {
-            Loaf("  비켜요 비켜 ~~ 🚵‍♀️🚴‍♀️🚵‍♂️🚴‍♂️🚵‍♀️🚴‍♀️", state: .success, location: .top, sender: self).show()
+            Loaf("  따릉 따릉 ~ 🚵‍♀️🚴‍♀️🚵‍♂️🚴‍♂️🚵‍♀️🚴‍♀️", state: .success, location: .top, sender: self).show()
         }
     }
     
@@ -66,11 +65,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     // MARK: - Helpers
-    private func getData() {
-        Service.shared.getData { (stationInfos) in
-            self.stationInfos = stationInfos
-        }
-    }
     
     private func setRegion(setCase: SetRegionCase, completion: (() -> ())? = nil) {
         
@@ -83,16 +77,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case .test:
             // 서울역 (Develop Step)
             let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
-            region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
+            region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             
         case .viewDidAppear:
-            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 8000, longitudinalMeters: 8000)
+            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             
         case .goToCurrentLocation:
-            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
+            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             
         case .didSelect(let coordinate):
             region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+            
+        case .didDeSelect(let coordinate):
+            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         }
         
         mapView.setRegion(region, animated: true)
@@ -126,7 +123,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         mapView.delegate = self
+        mapView.isZoomEnabled = false
         popupViewLauncher.delegate = self
+        popupViewLauncher.locationManager = self.locationManager
     }
     
     // MARK: - ConfigureNavi
@@ -162,7 +161,7 @@ extension ViewController: MKMapViewDelegate {
         var bikeAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annoView") as? MKMarkerAnnotationView
         
         if bikeAnnotationView == nil {
-            bikeAnnotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annoView")
+            bikeAnnotationView = NonClusteringMKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annoView")
         } else {
             bikeAnnotationView?.annotation = annotation
         }
@@ -172,7 +171,10 @@ extension ViewController: MKMapViewDelegate {
             if $0.stationName == annotation.title {
                 bikeAnnotationView?.glyphText = annotation.subtitle!
                 
-                if ["0", "1", "2", "3", "4", "5"].contains($0.parkingCount) {
+                if ["0"].contains($0.parkingCount) {
+                    bikeAnnotationView?.markerTintColor = .black
+                    bikeAnnotationView?.glyphText = "🙅🏻"
+                } else if ["1", "2", "3", "4", "5"].contains($0.parkingCount) {
                     bikeAnnotationView?.markerTintColor = .systemRed
                 } else if ["6", "7", "8", "9", "10"].contains($0.parkingCount) {
                     bikeAnnotationView?.markerTintColor = .systemOrange
@@ -215,7 +217,7 @@ extension ViewController: PopupViewDelegate {
     func PopupViewDelegate(annotationView: MKAnnotationView) {
         
         UIView.animate(withDuration: 0.5) {
-            
+            self.setRegion(setCase: .didDeSelect(annotationView.annotation!.coordinate))
             annotationView.isSelected = false
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += 190

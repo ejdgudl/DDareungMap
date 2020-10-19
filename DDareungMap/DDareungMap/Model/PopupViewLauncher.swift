@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 protocol PopupViewDelegate: class {
     func PopupViewDelegate(annotationView: MKAnnotationView)
@@ -47,6 +48,12 @@ class PopupViewLauncher: NSObject {
     
     let snapShotView = UIView(frame: .zero)
     
+    private let distanceLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let dockCountLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -60,7 +67,7 @@ class PopupViewLauncher: NSObject {
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [dockCountLabel, parkingCountLabel])
+        let stackView = UIStackView(arrangedSubviews: [dockCountLabel, parkingCountLabel, distanceLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 10
@@ -71,6 +78,7 @@ class PopupViewLauncher: NSObject {
     weak var delegate: PopupViewDelegate?
     var annotationView: MKAnnotationView?
     var stationInfos = [StationInfo]()
+    var locationManager: CLLocationManager?
     
     // MARK: - Selector
     @objc private func didTapBackView() {
@@ -179,6 +187,14 @@ class PopupViewLauncher: NSObject {
                     
                     parkingCountLabel.getAttributedString(lhs: "대여소의 남은 자전거 개수:   ", rhs: $0.parkingCount)
                     
+                    let distanceFormatter = MKDistanceFormatter()
+                    distanceFormatter.unitStyle = .abbreviated
+                    
+                    guard let userLocation = locationManager?.location else { return }
+                    let destination = $0.location
+                    let distance = userLocation.distance(from: destination!)
+                    let distanceAsString = distanceFormatter.string(fromDistance: distance)
+                    distanceLabel.getAttributedString(lhs: "대여소까지: ", rhs: distanceAsString)
                 }
             }
         }

@@ -29,6 +29,10 @@ struct StationInfo: Codable {
     var coordinate: CLLocationCoordinate2D? {
         return CLLocationCoordinate2D(latitude: CLLocationDegrees(lat)!, longitude: CLLocationDegrees(lon)!)
     }
+    
+    var location: CLLocation? {
+        return CLLocation(latitude: Double(lat)!, longitude: Double(lon)!)
+    }
 
     enum CodingKeys: String, CodingKey {
         case dockCount = "rackTotCnt"

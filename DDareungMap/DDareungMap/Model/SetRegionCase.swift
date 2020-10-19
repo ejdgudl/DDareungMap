@@ -14,5 +14,6 @@ enum SetRegionCase {
     case viewDidAppear
     case goToCurrentLocation
     case didSelect(CLLocationCoordinate2D)
+    case didDeSelect(CLLocationCoordinate2D)
     
 }
