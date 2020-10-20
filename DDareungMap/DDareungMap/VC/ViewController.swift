@@ -59,14 +59,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setRegion(setCase: .test) {
-            Loaf("  잠시만 기다려 주세요 ~ 🚴‍♀️🚴‍♂️🚴‍♀️", state: .info, location: .top, sender: self).show()
-        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.launchView.alpha = 0
             self.floatButton.alpha = 1
             self.launchView.removeFromSuperview()
+            let alert = UIAlertController(title: nil, message: "오늘도 안전운전", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default) { (_) in
+                self.setRegion(setCase: .seoulStation)
+                Loaf("  헬멧은 착용하셨나요 ~? 🚴‍♀️🚴‍♂️🚴‍♀️", state: .info, location: .top, sender: self).show()
+            }
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+            
         })
     }
     
@@ -92,8 +97,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         switch setCase {
         
-        case .test:
-            // 서울역 (Develop Step)
+        case .seoulStation:
             let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
             region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             
@@ -274,6 +278,7 @@ extension ViewController: UISearchBarDelegate {
         
         subStationInfos.forEach {
             if text.contains($0.stationName) {
+                searchPopupViewLauncher.searchResults.removeAll()
                 searchPopupViewLauncher.searchResults.append($0)
             }
         }
