@@ -54,7 +54,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        configureNavi()
         configureViews()
     }
     
@@ -65,9 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            UIView.animate(withDuration: 1.5) {
-                self.launchView.alpha = 0
-            }
+            self.launchView.alpha = 0
             self.floatButton.alpha = 1
             self.launchView.removeFromSuperview()
         })
@@ -148,11 +145,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         infoPopupViewLauncher.locationManager = self.locationManager
         searchPopupViewLauncher.delegate = self
         searchPopupViewLauncher.searchBar.delegate = self
-    }
-    
-    // MARK: - ConfigureNavi
-    private func configureNavi() {
-        
     }
     
     // MARK: - ConfigureViews
