@@ -93,29 +93,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         var region: MKCoordinateRegion!
         
-        guard let coordinate = locationManager.location?.coordinate else { return }
-        
-        switch setCase {
-        
-        case .seoulStation:
+        if let coordinate = locationManager.location?.coordinate {
+            switch setCase {
+            
+            case .seoulStation:
+                let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
+                region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                
+            case .viewDidAppear:
+                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                
+            case .goToCurrentLocation:
+                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                
+            case .didSelect(let coordinate):
+                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+                
+            case .didDeSelect(let coordinate):
+                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            }
+            mapView.setRegion(region, animated: true)
+            
+        } else {
             let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
             region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            
-        case .viewDidAppear:
-            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            
-        case .goToCurrentLocation:
-            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            
-        case .didSelect(let coordinate):
-            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-            
-        case .didDeSelect(let coordinate):
-            region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
         }
-        
-        mapView.setRegion(region, animated: true)
+    
         completion?()
+        
     }
     
     // MARK: - Configure Station Infos
