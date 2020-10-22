@@ -34,6 +34,7 @@ class InfoPopupViewLauncher: NSObject {
     private let stationNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()

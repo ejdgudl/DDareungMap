@@ -93,16 +93,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         var region: MKCoordinateRegion!
         
+        // 허용
         if let coordinate = locationManager.location?.coordinate {
             switch setCase {
             
             case .seoulStation:
                 let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
                 region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-                
-            case .viewDidAppear:
-                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-                
             case .goToCurrentLocation:
                 region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
                 
@@ -115,9 +112,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             mapView.setRegion(region, animated: true)
             
         } else {
-            let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
-            region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapView.setRegion(region, animated: true)
+            // 거부
+            switch setCase {
+            
+            case .seoulStation:
+                let testCoordinate = CLLocationCoordinate2D(latitude: 37.553697, longitude: 126.969718)
+                region = MKCoordinateRegion(center: testCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            case .goToCurrentLocation:
+                break
+            case .didSelect(let coordinate):
+                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+                
+            case .didDeSelect(let coordinate):
+                region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            }
+            
+            if region != nil {
+                mapView.setRegion(region, animated: true)
+            }
+            
         }
     
         completion?()
@@ -255,7 +268,8 @@ extension ViewController: InfoPopupViewDelegate {
 extension ViewController: SearchPopupViewDelegate {
     
     func goToSelectSubway(stationCoordinate: CLLocationCoordinate2D) {
-        setRegion(setCase: .didDeSelect(stationCoordinate))
+        let region = MKCoordinateRegion(center: stationCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: true)
         searchPopupViewLauncher.searchBar.text = ""
         searchPopupViewLauncher.searchResults.removeAll()
     }

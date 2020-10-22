@@ -11,7 +11,6 @@ import CoreLocation
 enum SetRegionCase {
     
     case seoulStation
-    case viewDidAppear
     case goToCurrentLocation
     case didSelect(CLLocationCoordinate2D)
     case didDeSelect(CLLocationCoordinate2D)
