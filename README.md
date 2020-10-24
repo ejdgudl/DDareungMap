@@ -26,7 +26,8 @@
 
 
 
-# Reject 
+# Reject 기록
+
 
 <p align="center">
 <img width="400" alt="2" src="https://user-images.githubusercontent.com/63357508/97090067-7205d600-1672-11eb-8a50-2845805a609a.png">  
