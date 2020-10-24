@@ -28,7 +28,10 @@
 
 # Reject 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/746753f4-593e-4739-a61e-c3b3ad65c2fb/.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/746753f4-593e-4739-a61e-c3b3ad65c2fb/.png)
+<p align="center">
+<img width="400" alt="2" src="https://user-images.githubusercontent.com/63357508/97090067-7205d600-1672-11eb-8a50-2845805a609a.png">  
+</p>
+
 
 앱 심사가 통과되면 Reject 사유들을 기록해서 정리해야겠다 라고 생각하고 있었다..
 
