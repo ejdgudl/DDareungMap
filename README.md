@@ -1,6 +1,7 @@
 # DDareung MAp
 - 개인 Toy Project
 - 20.10.25 배포
+- <https://apps.apple.com/us/app/따릉맵/id1536517033>
 
 # Intro 
 - 서울시 공공 자전거 실시간 현황, 지하철 역정보 OpenApi를 사용하여 진행한 Project
