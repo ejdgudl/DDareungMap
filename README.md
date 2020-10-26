@@ -1,3 +1,5 @@
+# 2020.10.26 Open API 서버 ERROR로 인하여 자전거 이용 현황 DATA를 불러올 수 없습니다.서버측에 문의중이오니 양해 부탁 드리겠습니다.
+
 # DDareung MAp
 - 개인 Toy Project
 - 20.10.25 배포
