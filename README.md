@@ -1,8 +1,6 @@
-# 2020.10.26 Open API 서버 ERROR로 인하여 자전거 이용 현황 DATA를 불러올 수 없습니다. 빠른 해결을 위해 서버측에 문의중이오니 조금만 양해 부탁 드리겠습니다.
-
 # DDareung MAp
 - 개인 Toy Project
-- 20.10.25 배포
+- 20.10.25 1.0.2 배포
 - <https://apps.apple.com/us/app/따릉맵/id1536517033>
 
 # Intro 
