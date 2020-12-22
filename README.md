@@ -1,6 +1,7 @@
 # DDareung MAp
 - 개인 Toy Project
 - 20.10.25 1.0.2 배포
+- 20.12.22 1.0.3 검색시 다수의 결과가 나오지 않는 Bug fix
 - <https://apps.apple.com/us/app/따릉맵/id1536517033>
 
 # Intro 
