@@ -15,14 +15,18 @@ import Loaf
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Properties
+    
+    /// 자전거 대여소 정보
     var bikeStationInfos = [StationInfo]() {
         didSet {
             configureStationInfos()
         }
     }
     
+    /// 지하철역 정보
     var subStationInfos = [SubStationInfo]()
 
+    /// Floating Button
     private lazy var floatButton: Floaty = {
         let button = Floaty()
         button.alpha = 0
@@ -71,21 +75,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             alert.addAction(ok)
             self.present(alert, animated: true)
-            
         })
     }
     
-    // MARK: - Init
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - Selector
-    
     
     // MARK: - Helpers
     
@@ -295,10 +288,9 @@ extension ViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
         
         guard let text = searchBar.text else { return }
-        
+        searchPopupViewLauncher.searchResults.removeAll()
         subStationInfos.forEach {
             if text.contains($0.stationName) {
-                searchPopupViewLauncher.searchResults.removeAll()
                 searchPopupViewLauncher.searchResults.append($0)
             }
         }
