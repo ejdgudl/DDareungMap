@@ -34,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.subStationInfos = subStationInfo
         }
         
-        /// UserInterfaceStyle
-        if #available(iOS 13.0, *) {
-          self.window?.overrideUserInterfaceStyle = .light
-        }
         
         return true
     }

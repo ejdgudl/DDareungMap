@@ -35,7 +35,7 @@ class LaunchView: UIView {
         let label2 = UILabel()
         label2.textColor = .white
         label2.font = .systemFont(ofSize: 10, weight: .regular)
-        label2.text = "ver 1.0.3"
+        label2.text = "ver 1.1"
         label2.textAlignment = .center
         view.addSubview(label2)
         label2.snp.makeConstraints { (make) in

@@ -18,7 +18,7 @@ class InfoPopupViewLauncher: NSObject {
     // MARK: - Properties
     private lazy var mainView: UIView = {
         let mainView = UIView()
-        mainView.backgroundColor = .white
+        mainView.backgroundColor = .systemBackground
         return mainView
     }()
     

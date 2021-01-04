@@ -31,7 +31,7 @@ class SearchPopupViewLauncher: NSObject {
     
     private lazy var mainView: UIView = {
         let mainView = UIView()
-        mainView.backgroundColor = .white
+        mainView.backgroundColor = .systemBackground
         return mainView
     }()
     
@@ -55,6 +55,7 @@ class SearchPopupViewLauncher: NSObject {
         let tableView = UITableView()
         tableView.rowHeight = 40
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .systemBackground
         return tableView
     }()
     

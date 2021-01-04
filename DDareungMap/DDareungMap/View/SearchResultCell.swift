@@ -59,7 +59,7 @@ class SearchResultCell: UITableViewCell {
 
     // MARK: - ConfigureViews
     private func configureViews() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         
         [lineNameLabel, stationNameLabel, deviderView].forEach {
             addSubview($0)
